@@ -1,0 +1,44 @@
+.SH NAME
+. simple_shell
+
+.SH DESCRIPTION
+It is an ALX project for students to explore and build a working functional simple shell program.
+
+The shell is a command that read lines from either a file or the terminal, interprets them, and generally executes other commands.
+
+
+.B Overview
+
+The simple shell is a simplified iteration of a command line interpreter similar to
+.B bash 
+
+.SH OPTIONS
+.B Simple Shell
+operates in both
+.I interactive
+and 
+.I non-interactive
+mode. The user may initiate
+.B simple shell
+and begin working or initate
+.B simple shell
+using commands meant to be run by the program.
+.
+.SH Return value
+The return value of a simple command is its exit status
+.SH Example
+./hsh
+
+
+.SH RESERVED WORDS
+.B exit:
+quits the program, exit the shell.
+
+.B environ:
+prints the enviroment variables.
+
+.B PATH:
+The default search path for executables.
+
+.SH AUTHOR
+Ivone Atieno
