@@ -34,7 +34,7 @@ The return value of a simple command is its exit status
 .B exit:
 quits the program, exit the shell.
 
-.B environ:
+.B env:
 prints the enviroment variables.
 
 .B PATH:

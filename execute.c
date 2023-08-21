@@ -4,13 +4,13 @@
 * execute - verifies and execute every command
 *@commands: command inputted
 *@buffer: command in getline
-*@environ: enviroment variable
+*@env: enviroment variable
 *@argv: argument counter
 *@count: execution times
 *Return: void
 */
 
-void execute(char **commands, char *buffer, char **environ,
+void execute(char **commands, char *buffer, char **env,
 	     char **argv, int count)
 {
 	struct stat fileStat;
@@ -22,12 +22,12 @@ void execute(char **commands, char *buffer, char **environ,
 	else if (_strcmp("exit", commands[0]))
 		_getline(buffer, commands);
 	/* check if the command to print environment variables */
-	else if (_strcmp("environ", commands[0]))
-		free_environ(buffer, commands, environ);
+	else if (_strcmp("env", commands[0]))
+		free_environ(buffer, commands, env);
 	/*check if the command is a full path**/
 	else if (stat(commands[0], &fileStat) == 0)
 		execve(commands[0], commands, NULL);
 	/*check all $PATH directories for executable commands*/
 	else
-		find_path(commands, buffer, environ, argv, count);
+		find_path(commands, buffer, env, argv, count);
 }

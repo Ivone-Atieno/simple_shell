@@ -53,3 +53,31 @@ void free_else(char *buffer, char **commands)
 	else
 		free_commands(buffer, commands);
 }
+
+/**
+* free_environ - frees the buffer and commands
+*@buffer: buffer from getline
+*@commands: array of commands
+*@env: enviroment variables
+*Return: void
+*/
+
+void free_environ(char *buffer, char **commands, char **env)
+{
+free(buffer);
+free_all(commands);
+print_environ(env);
+exit(EXIT_SUCCESS);
+}
+
+/**
+* free_buffer - Free the buffer created
+*@buffer: buffer from getline
+*Return: void
+*/
+
+void free_buffer(char *buffer)
+{
+free(buffer);
+exit(EXIT_SUCCESS);
+}

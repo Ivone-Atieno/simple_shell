@@ -3,11 +3,11 @@
 * main - main function
 *@argc: argument count
 *@argv: argument vector
-*@environ: enviroment variables
+*@env: enviroment variables
 *Return: 0 on success else 1
 */
 
-int main(int argc, char **argv, char **environ)
+int main(int argc, char **argv, char **env)
 {
 char *buffer, **commands;
 int status, count;
@@ -33,7 +33,7 @@ pid = fork();
 if (pid == -1)
 _fork();
 if (pid == 0)
-execute(commands, buffer, environ, argv, count);
+execute(commands, buffer, env, argv, count);
 /*free all*/
 else
 {

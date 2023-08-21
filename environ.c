@@ -29,17 +29,17 @@ unsigned int count_dir(char *path)
 * store_var - Function that create a double pointer array, where stores
 *each path directory as a pointer
 *@f_cmd: first command inserted in the prompt
-*@environ: enviroment variables
+*@env: enviroment variables
 *Return: enviroment
 */
 
-char **store_var(char *f_cmd, char **environ)
+char **store_var(char *f_cmd, char **env)
 {
 	char **directories, *path_env, *directory;
 	unsigned int length, i = 0;
 	int dir_length, command_length;
 
-	path_env = _getenv("PATH", environ);
+	path_env = _getenv("PATH", env);
 	length = count_dir(path_env);
 	directories = malloc(sizeof(char *) * (length + 1));
 	if (directories == NULL)
@@ -72,11 +72,11 @@ char **store_var(char *f_cmd, char **environ)
 /**
 * _getenv - Function to get the enviroment variable
 *@name: name of the enviroment variable
-*@environ: enviroment variables
+*@env: enviroment variables
 *Return: the value associated with the variable
 */
 
-char *_getenv(const char *name, char **environ)
+char *_getenv(const char *name, char **env)
 {
 	char *env_value, *cp_name;
 	unsigned int i = 0, length;
@@ -92,8 +92,8 @@ char *_getenv(const char *name, char **environ)
 	_strncpyconst(cp_name, name, length);
 
 	/*finding the enviroment variable*/
-	env_value = strtok(environ[i], "=");
-	while (environ[i])
+	env_value = strtok(env[i], "=");
+	while (env[i])
 	{
 		if (_strcmp(env_value, cp_name))
 			{																																										env_value = strtok(NULL, "\n");
@@ -101,7 +101,7 @@ char *_getenv(const char *name, char **environ)
 			return (env_value);
 		}
 		i++;
-		env_value = strtok(environ[i], "=");
+		env_value = strtok(env[i], "=");
 	}
 	free(cp_name);
 	return (NULL);
@@ -135,18 +135,18 @@ char *_strncpcommand(char *dest, char *src, char *command, int n, int c)
 
 /**
 * print_environ - Function to print all enviroment variables
-*@environ: enviroment variables for the user
+*@env: enviroment variables for the user
 *Return: void
 */
 
-void print_environ(char **environ)
+void print_environ(char **env)
 {
 	unsigned int i = 0, length;
 
-	while (environ[i])
+	while (env[i])
 	{
-		length = _strlen(environ[i]);
-		write(STDOUT_FILENO, environ[i], length);
+		length = _strlen(env[i]);
+		write(STDOUT_FILENO, env[i], length);
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
